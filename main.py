@@ -1,32 +1,50 @@
 from textual.app import App, ComposeResult
 from textual.containers import HorizontalGroup, VerticalScroll
-from textual.widgets import Button, Digits, Footer, Header, Label
+from textual.widgets import Button, Digits, Footer, Header, Label, TextArea
+import sys
 
 
-class TimeDisplay(Label):
-    """A widget to display elapsed time."""
+class Cell(Label):
+    """A widget to display the value of a cell in memory."""
 
 
-class Stopwatch(HorizontalGroup):
-    """A stopwatch widget."""
+class CellLine(HorizontalGroup):
+    """A cell widget."""
 
     def compose(self) -> ComposeResult:
         """Create a single line of cells"""
 
-        for i in range(10):
-            yield Label("000", variant="cell_label")
+        for x in range(10):
+            yield Cell("000", variant="cell_label")
 
-class StopwatchApp(App):
-    """A Textual app to manage stopwatches."""
+
+class BrainfkView(TextArea):
+    """The area where Brainfk will be displayed"""
+
+
+class BrainfooApp(App):
+    """The main Brainfoo app"""
 
     CSS_PATH = "style.css"
-    BINDINGS = [("d", "toggle_dark", "Toggle dark mode")]
+    BINDINGS = [("d", "toggle_dark", "Toggle dark mode"),
+                ("q", "quit", "Quit"),
+                ("r", "run", "Run")]
 
     def compose(self) -> ComposeResult:
         """Create child widgets for the app."""
         yield Header()
         yield Footer()
-        yield VerticalScroll(Stopwatch(), Stopwatch(), Stopwatch())
+        
+        cellGrid: list[CellLine] = []
+        for _ in range(50):
+            cellGrid.append(CellLine())
+        
+        yield Button("Run", classes="run_button")
+        yield HorizontalGroup(
+            VerticalScroll(*cellGrid),
+            BrainfkView("+++..>>[]>..<"),
+            id="main_area"
+        )
 
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""
@@ -34,7 +52,15 @@ class StopwatchApp(App):
             "textual-dark" if self.theme == "textual-light" else "textual-light"
         )
 
+    def action_quit(self) -> None:
+        """Quit the app"""
+        self.exit()
+
+    def action_run(self) -> None:
+        """Start execution of brainfk"""
+        ...
+
 
 if __name__ == "__main__":
-    app = StopwatchApp()
+    app = BrainfooApp()
     app.run()
