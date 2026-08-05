@@ -1,11 +1,11 @@
 """
-Brainfoo is a TUI debugger for Brainfk written in Python, designed to be keyboard and mouse friendly.
+Brainfoo is a TUI debugger for Brainfk written in Python, designed to be
+keyboard and mouse friendly.
 """
 
 from textual.app import App, ComposeResult
 from textual.containers import HorizontalGroup, VerticalGroup, VerticalScroll
-from textual.widgets import Button, Digits, Footer, Header, Label, TextArea
-import sys
+from textual.widgets import Button, Footer, Label, TextArea
 
 
 class Cell(Label):
@@ -18,7 +18,7 @@ class CellLine(HorizontalGroup):
     def compose(self) -> ComposeResult:
         """Create a single line of cells"""
 
-        for x in range(10):
+        for _ in range(10):
             yield Cell("000", variant="cell_label")
 
 
@@ -38,9 +38,9 @@ class BrainfooApp(App):
         """Create child widgets for the app."""
         yield Footer()
 
-        cellGrid: list[CellLine] = []
+        cell_grid: list[CellLine] = []
         for _ in range(50):
-            cellGrid.append(CellLine())
+            cell_grid.append(CellLine())
 
         buttons: list[Button] = [
             Button("▶ RUN", classes="run_button", compact=True),
@@ -49,7 +49,7 @@ class BrainfooApp(App):
         yield HorizontalGroup(
             VerticalGroup(
                 HorizontalGroup(*buttons),
-                VerticalScroll(*cellGrid)
+                VerticalScroll(*cell_grid)
             ),
             BrainfkView("+++..>>[]>..<"),
             id="main_area"
@@ -68,5 +68,3 @@ class BrainfooApp(App):
     def action_run(self) -> None:
         """Start execution of brainfk"""
         ...
-
-
