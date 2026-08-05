@@ -34,11 +34,11 @@ class BrainfooApp(App):
         """Create child widgets for the app."""
         yield Header()
         yield Footer()
-        
+
         cellGrid: list[CellLine] = []
         for _ in range(50):
             cellGrid.append(CellLine())
-        
+
         yield Button("Run", classes="run_button")
         yield HorizontalGroup(
             VerticalScroll(*cellGrid),
