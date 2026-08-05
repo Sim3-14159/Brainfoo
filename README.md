@@ -1,4 +1,4 @@
-# $\Huge{\textbf{Brainfoo}}$ <img align="left" alt="Brainfoo icon: an ASCII brain with colored letters and blocks inside" src="src/brainfoo/logo.gif" height="250">
+# $\Huge{\textbf{Brainfoo}}$ <img align="left" alt="Brainfoo icon: an ASCII brain with colored letters and blocks inside" src="src/brainfoo/animated-logo.png" height="250">
 
 
 Brainfoo is a TUI debugger for Brainfk written in Python, designed to be keyboard and mouse friendly.
