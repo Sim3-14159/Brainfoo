@@ -65,6 +65,3 @@ class BrainfooApp(App):
         ...
 
 
-if __name__ == "__main__":
-    app = BrainfooApp()
-    app.run()

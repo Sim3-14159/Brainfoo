@@ -24,4 +24,4 @@ jobs:
 
       - name: Run pylint
         run: |
-          uv run pylint main.py
+          uv run pylint src/brainfoo/

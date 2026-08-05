@@ -1,0 +1,22 @@
+Button {
+    
+}
+
+.run_button {
+	background: green;
+	margin: 0;
+	padding: 0;
+	color: black;
+}
+
+.cell_label {
+	background: green;
+	margin-left: 1;
+	margin-right: 1;
+}
+
+BrainfkView {
+    width: 30%;
+    min-width: 20;
+    padding: 1;
+}
