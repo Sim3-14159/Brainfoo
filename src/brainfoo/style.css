@@ -1,11 +1,15 @@
 Button {
-    
+	margin-left: 1;
+	margin-right: 1;
 }
 
 .run_button {
 	background: green;
-	margin: 0;
-	padding: 0;
+	color: black;
+}
+
+.stop_button {
+	background: red;
 	color: black;
 }
 

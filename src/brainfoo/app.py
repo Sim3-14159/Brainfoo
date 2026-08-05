@@ -3,7 +3,7 @@ Brainfoo is a TUI debugger for Brainfk written in Python, designed to be keyboar
 """
 
 from textual.app import App, ComposeResult
-from textual.containers import HorizontalGroup, VerticalScroll
+from textual.containers import HorizontalGroup, VerticalGroup, VerticalScroll
 from textual.widgets import Button, Digits, Footer, Header, Label, TextArea
 import sys
 
@@ -36,16 +36,21 @@ class BrainfooApp(App):
 
     def compose(self) -> ComposeResult:
         """Create child widgets for the app."""
-        yield Header()
         yield Footer()
 
         cellGrid: list[CellLine] = []
         for _ in range(50):
             cellGrid.append(CellLine())
 
-        yield Button("Run", classes="run_button")
+        buttons: list[Button] = [
+            Button("▶ RUN", classes="run_button", compact=True),
+            Button("⬤ STOP", classes="stop_button", compact=True)
+        ]
         yield HorizontalGroup(
-            VerticalScroll(*cellGrid),
+            VerticalGroup(
+                HorizontalGroup(*buttons),
+                VerticalScroll(*cellGrid)
+            ),
             BrainfkView("+++..>>[]>..<"),
             id="main_area"
         )
