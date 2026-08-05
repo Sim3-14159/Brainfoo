@@ -61,10 +61,10 @@ class BrainfooApp(App):
             "textual-dark" if self.theme == "textual-light" else "textual-light"
         )
 
-    def action_quit(self) -> None:
+    async def action_quit(self) -> None:
         """Quit the app"""
         self.exit()
 
     def action_run(self) -> None:
         """Start execution of brainfk"""
-        ...
+        # To be implemented
