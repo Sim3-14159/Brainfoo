@@ -17,10 +17,12 @@ uv sync
 ```
 To run:
 ```bash
-uv run main.py
+cd src/
+# Run as module
+uv run python -m brainfoo
 ```
 
-<mark>You can also download a compiled binary from the [releases page](https://github.com/Sim3-14159/Brainfoo/releases)</mark>
+<mark>You can also download a compiled binary from the [releases page](https://github.com/Sim3-14159/Brainfoo/releases).</mark>
 
 ## Contributing
 Contributing is very welcome! Brainfoo isn't a very serious project, and it is rather small, but if you have anything that you want to add to it, or you have any issues with it, feel free to [open a pull request](https://github.com/Sim3-14159/Brainfoo/compare) or [raise a new issue](https://github.com/Sim3-14159/Brainfoo/issues/new/choose).
