@@ -1,3 +1,17 @@
+CharInput {
+    width: 20;
+    background: black;
+    color: white;
+}
+
+CharInput:hover {
+    text-style: underline;
+}
+
+CharInput:focus {
+    background: blue;
+}
+
 Button {
 	margin-left: 1;
 	margin-right: 1;
