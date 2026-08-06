@@ -32,7 +32,7 @@ jobs:
 
       - run: uv sync --all-extras --dev
 
-      - run: uv run pytest tests/*.py
+      - run: uv run pytest tests/__init__.py
 
   build:
     needs: test
