@@ -3,6 +3,7 @@ Brainfoo is a TUI debugger for Brainfk written in Python, designed to be
 keyboard and mouse friendly.
 """
 
+from pathlib import Path
 from textual.app import App, ComposeResult
 from textual.containers import HorizontalGroup, VerticalGroup, VerticalScroll
 from textual.widgets import Button, Footer, Label, TextArea
@@ -29,7 +30,7 @@ class BrainfkView(TextArea):
 class BrainfooApp(App):
     """The main Brainfoo app"""
 
-    CSS_PATH = "style.css"
+    CSS_PATH = Path(__file__).parent / "assets" / "style.css"
     BINDINGS = [("d", "toggle_dark", "Toggle dark mode"),
                 ("q", "quit", "Quit"),
                 ("r", "run", "Run")]

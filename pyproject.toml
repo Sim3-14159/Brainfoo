@@ -1,9 +1,9 @@
 [project]
 name = "brainfoo"
 version = "0.1.0"
-description = "Add your description here"
+description = "A TUI Brainfk debugger."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = [
     "textual>=8.2.8",
 ]

@@ -3,7 +3,7 @@ Way to access app.py
 """
 
 import argparse
-from .app import BrainfooApp
+from brainfoo.app import BrainfooApp
 
 
 print("""
