@@ -65,8 +65,8 @@ class BrainfkInterpreter:
                         if hasattr(self.stdin, 'refresh'):
                             self.stdin.refresh()
                     else:
-                        # no input available: store 0
-                        self.cells[self.cell_index] = 0
+                        yield True
+                        self.cells[self.cell_index] = self.stdin.bytes.pop(0)
                 case "[":
                     if self.cells[self.cell_index] == 0:
                         self.instruction_index = self.find_bracket_match(self.instruction_index, True)

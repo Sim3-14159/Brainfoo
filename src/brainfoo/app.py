@@ -103,7 +103,8 @@ class BrainfooApp(App):
         yield HorizontalGroup(
             VerticalGroup(
                 HorizontalGroup(*header),
-                VerticalScroll(*row_groups)
+                VerticalScroll(*row_groups),
+                classes="side_group"
             ),
             VerticalGroup(self.bf_view, self.output_view),
             id="main_area"
@@ -137,8 +138,18 @@ class BrainfooApp(App):
         await asyncio.sleep(0)
 
         interpreter = BrainfkInterpreter(code=self.bf_view.text, stdin=self.char_input, tick_callback=self._on_tick)
+        waiting_for_input = False
         for out_char in interpreter.run():
-            self.output_view.text += out_char
+            if out_char != True:
+                self.output_view.text += out_char
+            else:
+                self.char_input.placeholder = "Waiting..."
+                waiting_for_input = True
+
+            while waiting_for_input:
+                await asyncio.sleep(0.1)
+                if self.char_input.bytes:
+                    waiting_for_input = False
             self.output_view.refresh()
             # yield briefly so UI (output + cell grid) can refresh during long runs
             await asyncio.sleep(0)
