@@ -35,5 +35,8 @@ class CellUnderflowError(BrainfkError):
     NAME = "CELL UNDERFLOW ERROR"
 
 class CellOverflowError(BrainfkError):
-    """Error for an overflow of cells, where cell_index = CELL_ARRAY_LENGTH - 1 and the user tries to execute `>`"""
+    """
+    Error for an overflow of cells, where cell_index = CELL_ARRAY_LENGTH - 1 
+    and the user tries to execute `>`
+    """
     NAME = "CELL UNDERFLOW ERROR"

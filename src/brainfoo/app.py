@@ -9,7 +9,7 @@ import asyncio
 
 from textual.app import App, ComposeResult
 from textual.containers import HorizontalGroup, VerticalGroup, VerticalScroll
-from textual.widgets import Button, Footer, Label, TextArea, Static
+from textual.widgets import Button, Footer, Label, TextArea
 from textual.widget import Widget
 
 from brainfoo.interpreter import BrainfkInterpreter
@@ -41,9 +41,9 @@ class CharInput(Widget):
         if not self.bytes:
             self.styles.color = "gray"
             return "Program stdin"
-        else:
-            self.styles.color = "white"
-            return ''.join([chr(byte) for byte in self.bytes])
+
+        self.styles.color = "white"
+        return ''.join([chr(byte) for byte in self.bytes])
 
 
 class Cell(Label):
@@ -137,7 +137,8 @@ class BrainfooApp(App):
         # yield once to let the UI update the button state before running
         await asyncio.sleep(0)
 
-        interpreter = BrainfkInterpreter(code=self.bf_view.text, stdin=self.char_input, tick_callback=self._on_tick)
+        interpreter = BrainfkInterpreter(code=self.bf_view.text,
+                                         stdin=self.char_input, tick_callback=self._on_tick)
         waiting_for_input = False
         for out_char in interpreter.run():
             if out_char is not True:

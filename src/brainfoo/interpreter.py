@@ -89,7 +89,9 @@ class BrainfkInterpreter:
 
 
     def find_bracket_match(self, start: int, forward: bool) -> int:
-        """Find bracket match in Brainfk source code. `forwards` is whether to go forwards or backwards 
+        """
+        Find bracket match in Brainfk source code. `forwards`
+        is whether to go forwards or backwards 
         searching for a ']' or '[', respectively
         """
 
