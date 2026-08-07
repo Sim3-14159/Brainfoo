@@ -42,8 +42,6 @@ class BrainfkInterpreter:
         if (l := self.code.count("[")) != (r := self.code.count("]")):
             raise ImbalancedBracketError(f"IMBALANCED NUMBER OF BRACKETS ('['x{l} / ']'x{r})")
         
-        output = ''
-
         # Keep going as long as there are potential instructions left
         while self.instruction_index < len(self.code):
             instruction = self.code[self.instruction_index]
@@ -53,7 +51,7 @@ class BrainfkInterpreter:
                 case "<":
                     self.cell_index -= 1
                     if self.cell_index < 0:
-                        raise CellUnderflowError
+                        raise CellUnderflowError("TRIED TO MOVE LEFT ('<') WHEN IN CELL #0")
                 case "+":
                     self.cells[self.cell_index] += 1
                 case "-":

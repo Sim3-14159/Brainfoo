@@ -13,5 +13,5 @@ def test_interpret_hello_world():
 def test_data_pointer_bounds():
     """Ensures tape boundaries throw expected errors or wrap correctly."""
     with pytest.raises(CellUnderflowError):
-        BrainfkInterpreter("<").run()  # Assuming moving left of zero faults
+        next(BrainfkInterpreter("<").run())  # Assuming moving left of zero faults
 
