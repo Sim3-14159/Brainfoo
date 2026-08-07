@@ -82,6 +82,7 @@ jobs:
             --output-filename=brainfoo \
             --include-package=textual \
             --include-data-dir=src/brainfoo/assets=brainfoo/assets \
+            --assume-yes-for-downloads \
             src/brainfoo
 
       - name: Rename executable
