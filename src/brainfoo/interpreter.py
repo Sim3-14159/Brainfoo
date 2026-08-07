@@ -52,6 +52,8 @@ class BrainfkInterpreter:
                     self.cell_index += 1
                 case "<":
                     self.cell_index -= 1
+                    if self.cell_index < 0:
+                        raise CellUnderflowError
                 case "+":
                     self.cells[self.cell_index] += 1
                 case "-":
