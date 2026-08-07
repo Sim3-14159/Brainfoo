@@ -29,7 +29,7 @@ class CharInput(Widget):
         if event.is_printable:
             # store the character's byte value (ctypes to allow wraparound)
             self.bytes.append(ctypes.c_ubyte(ord(event.character)).value)
-        
+
         elif event.name == "backspace":
             if self.bytes:
                 self.bytes.pop(-1)
@@ -38,7 +38,7 @@ class CharInput(Widget):
 
 
     def render(self) -> str:
-        if self.bytes == []:
+        if not self.bytes:
             self.styles.color = "gray"
             return "Program stdin"
         else:
@@ -140,7 +140,7 @@ class BrainfooApp(App):
         interpreter = BrainfkInterpreter(code=self.bf_view.text, stdin=self.char_input, tick_callback=self._on_tick)
         waiting_for_input = False
         for out_char in interpreter.run():
-            if out_char != True:
+            if out_char is not True:
                 self.output_view.text += out_char
             else:
                 self.char_input.placeholder = "Waiting..."

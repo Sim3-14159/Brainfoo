@@ -15,9 +15,9 @@ class BrainfkError(Exception):
 
     def __str__(self) -> str:
         """Return str representation for when `raise` is called"""
-        
+
         message = f"{type(self).NAME}: {self.reason}"
-        
+
         if self.row is not None:
             message += f" | line {self.row}"
             if self.col is not None:
