@@ -1,5 +1,6 @@
 import pytest
-from brainfoo.interpreter import BrainfkInterpreter, BrainfkError
+from brainfoo.errors import BrainfkError
+from brainfoo.interpreter import BrainfkInterpreter
 
 @pytest.fixture
 def interpreter():
