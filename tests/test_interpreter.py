@@ -2,20 +2,16 @@ import pytest
 from brainfoo.errors import BrainfkError, CellUnderflowError
 from brainfoo.interpreter import BrainfkInterpreter
 
-@pytest.fixture
-def interpreter():
-    """Initializes a fresh interpreter instance before each test."""
-    return BrainfkInterpreter()
-
-def test_interpret_hello_world(interpreter):
+def test_interpret_hello_world():
     """Verifies that the engine correctly produces output."""
     # Example Brainfk hello world snippet
-    code = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>."
-    result = interpreter.run(code)
+    interpreter = BrainfkInterpreter("++++++++++[>+++++++>++++++++++>+++>+<<<<-" +
+        "]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.")
+    result = ''.join([item for item in interpreter.run()])
     assert result == "Hello World!\n"
 
-def test_data_pointer_bounds(interpreter):
+def test_data_pointer_bounds():
     """Ensures tape boundaries throw expected errors or wrap correctly."""
     with pytest.raises(CellUnderflowError):
-        interpreter.run("<")  # Assuming moving left of zero faults
+        BrainfkInterpreter("<").run()  # Assuming moving left of zero faults
 
