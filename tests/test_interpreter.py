@@ -7,7 +7,7 @@ def test_interpret_hello_world():
     # Example Brainfk hello world snippet
     interpreter = BrainfkInterpreter("++++++++++[>+++++++>++++++++++>+++>+<<<<-" +
         "]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.")
-    result = ''.join([item for item in interpreter.run()])
+    result = ''.join(list(interpreter.run()))
     assert result == "Hello World!\n"
 
 def test_data_pointer_bounds():
