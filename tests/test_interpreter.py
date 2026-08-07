@@ -1,5 +1,5 @@
 import pytest
-from brainfoo.errors import BrainfkError
+from brainfoo.errors import BrainfkError, CellUnderflowError
 from brainfoo.interpreter import BrainfkInterpreter
 
 @pytest.fixture
@@ -16,6 +16,6 @@ def test_interpret_hello_world(interpreter):
 
 def test_data_pointer_bounds(interpreter):
     """Ensures tape boundaries throw expected errors or wrap correctly."""
-    with pytest.raises(BrainfkError):
+    with pytest.raises(CellUnderflowError):
         interpreter.run("<")  # Assuming moving left of zero faults
 
